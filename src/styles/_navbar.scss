@@ -1,0 +1,73 @@
+.Navbar-container {
+    margin-top: 60px;
+    width:  100vw;
+    position: absolute;
+    padding: 0 6rem;
+
+    @include mobile {
+        margin-top: 36px;
+        padding: 0 1.3rem;
+    }
+
+    .Navbar-button {
+        color: $white;
+        display: inline-block;
+        position: relative;
+        width: 99px;
+        height: 42px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 24px;
+        font-size: 0.88rem;
+        line-height: 43px;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transition: all 0.4s;
+        }
+
+        @include mobile {
+            height: 33px;
+            width: 93px;
+            line-height: 34px;
+        }
+    }
+
+    .Shop-button {
+        &::before{
+            content: "_";
+            background-size: 70%;
+            background-image: url('../assets/images/left-chevron.svg');
+            background-position: 0 60%;
+            background-repeat: no-repeat;
+            color: transparent;
+            padding: 0 4px;
+
+            @include mobile {
+                padding: 0 3px;
+            }
+        }
+    }
+
+    .Share-button {
+        float: right;
+
+        &::after{
+            content: "_";
+            background-image: url('../assets/images/share-arrow.svg');
+            background-position: 97% 50%;
+            background-size: 59%;
+            background-repeat: no-repeat;
+            color: transparent;
+            padding: 0 9px;
+
+            @include mobile {
+                padding: 0 8px;
+            }
+        }
+    }
+}
+

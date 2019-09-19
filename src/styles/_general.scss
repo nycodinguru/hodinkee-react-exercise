@@ -1,0 +1,61 @@
+* {
+    font-family: $brownstd;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    &:focus, &:focus{
+    outline: none;
+    }
+}
+
+body, html {
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+body {
+    background-image: url('../assets/images/bg-2440.jpg');
+    background-color: $wallpaperColor;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    @include bigtablet  {
+        background-image: url('../assets/images/bg-1440.jpg');
+    }
+
+    @include tablet {
+        background-image: url('../assets/images/bg-720.jpg');
+    }
+
+    @include mobile {
+        background-image: url('../assets/images/bg-mobile.jpg');
+    }
+
+    &.Close {
+        overflow: hidden;
+    }
+}
+
+a {
+    cursor: pointer;
+    &:link,
+    &:hover,
+    &:visited {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    }
+}
+
+ul {
+    li {
+    list-style: none;
+    }
+}
+
+h1,
+h2,
+h3,
+h4{
+    cursor: default;
+}
