@@ -44,7 +44,7 @@
             height: 66px;
             transition: all 1s;
             background: $white;
-            margin: 100px auto;
+            margin: 90px auto;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,8 +55,12 @@
             
             &.Loaded {
                 opacity: 1;
-                transition: all 3.2s ease-in-out;
+                transition: all 2.9s ease-in-out;
                 margin: 0 auto;
+
+                .Submit-button {
+                    pointer-events: auto !important;
+                }
             }
 
             &.Submit-success {
@@ -116,6 +120,7 @@
             height: 42px;
             font-size: 1rem;
             text-shadow: 0px 0px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
 
             &:hover {
                 background-color: $hodinkee-green-hover;

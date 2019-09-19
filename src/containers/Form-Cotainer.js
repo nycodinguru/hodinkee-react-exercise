@@ -67,7 +67,7 @@ export default class FormContainer extends Component {
     }
 
     raiseInputParent(status){
-        status === 'focus'? document.querySelector('.Input-parent').classList.add('Focused') : 
+        status === 'focus' ? document.querySelector('.Input-parent').classList.add('Focused') : 
             document.querySelector('.Input-parent').classList.remove('Focused');
     }
 
