@@ -21,6 +21,8 @@ export default class FormContainer extends Component {
             if (e.keyCode === 13) that.handleSubmit(e);
         });
 
+        setTimeout( () => document.querySelector('.Input-parent').classList.add('Loaded'), 3400);
+
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);

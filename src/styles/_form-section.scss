@@ -18,6 +18,8 @@
             text-align: center;
             color: transparent;
             user-select: none;
+            opacity: 0;
+            animation: fade-in 1s ease-in-out 1.5s 1 forwards;
         }
 
         .Release-date {
@@ -29,6 +31,8 @@
             font-weight: 500;
             font-size: 1.2rem;
             line-height: 49px;
+            opacity: 0;
+            animation: fade-in 1s ease-in-out 2.8s 1 forwards;
 
             @include mobile {
                 margin: 26px 0;
@@ -40,13 +44,20 @@
             height: 66px;
             transition: all 1s;
             background: $white;
-            margin: 0 auto;
+            margin: 100px auto;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 4px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 1s;
+            opacity: 0;
+            
+            &.Loaded {
+                opacity: 1;
+                transition: all 3.2s ease-in-out;
+                margin: 0 auto;
+            }
 
             &.Submit-success {
                 animation: shrink-and-fade 1.5s ease-in-out 0s 1 forwards;
