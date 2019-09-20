@@ -55,7 +55,7 @@
             
             &.Loaded {
                 opacity: 1;
-                transition: all 2.9s ease-in-out;
+                transition: all 1.4s ease-in;
                 margin: 0 auto;
 
                 .Submit-button {
@@ -171,7 +171,7 @@
                 background-color: $red;
                 font-weight: 700; 
                 color: $white;
-                height: 80px;
+                height: 50px;
 
                 @include mobile {
                     width: 322px;
@@ -270,11 +270,19 @@
                     content: "_";
                     color: transparent;
                     background-image: url('../assets/images/alert-icon.svg');
-                    background-size: 54%;
-                    background-position: 0% 45%;
+                    background-size: 65%;
                     background-repeat: no-repeat;
                     filter: invert(100);
-                    padding: 15px 0px 15px 40px;
+                    position: absolute;
+                    height: 30px;
+                    width: 30px;
+                    left: 33px;
+                    top: 16px;
+
+                    @include mobile {
+                        background-size: 60%;
+                        left: 12px;
+                    }
                 }
 
                 .Message-email {

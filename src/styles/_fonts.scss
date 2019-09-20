@@ -9,7 +9,7 @@
       url("../assets/fonts/BrownStd-Regular/BrownStd-Regular.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
-    font-display: optional;
+    font-display: fallback;
 }
 
 @font-face {
@@ -23,7 +23,7 @@
       url("../assets/fonts/Portrait-MediumItalic/Portrait-MediumItalic.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
-    font-display: optional;
+    font-display: fallback;
 }
 
 

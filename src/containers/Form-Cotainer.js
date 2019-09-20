@@ -42,7 +42,8 @@ export default class FormContainer extends Component {
         if (!document.querySelector('.Invalid-field') && this.state.email.length > 0 && this.state.submissionSuccess === false && this.state.submissionAttempt === false) {
             this.setState({submissionSuccess: true})
             document.querySelector('.Input-parent').classList.add('Submit-success');
-            setTimeout( () => document.querySelector('.Message-parent-content').classList.add('Success'), 100) 
+            setTimeout( () => document.querySelector('.Message-parent-content').classList.add('Success'), 100);
+            setTimeout( () => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}), 1700);
             console.log('Submission successful!');
         }
     }
