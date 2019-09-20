@@ -26,10 +26,10 @@
             height: 48px;
             text-align: center;
             letter-spacing: 0.03em;
-            margin: 30px 0 50px 0;
+            margin: 25px 0 50px 0;
             color: $hodinkee-green;
-            font-weight: 500;
-            font-size: 1.2rem;
+            font-weight: 400;
+            font-size: 1.15rem;
             line-height: 49px;
             opacity: 0;
             animation: fade-in 1s ease-in-out 2.8s 1 forwards;
@@ -113,13 +113,14 @@
             position: relative;
             text-align: center;
             line-height: 43px;
-            font-weight: 500;
+            font-weight: 400;
+            letter-spacing: 0.02em;
             border-radius: 2px;
             cursor: pointer;
-            width: 125px;
+            width: 150px;
             height: 42px;
-            font-size: 1rem;
-            text-shadow: 0px 0px rgba(255, 255, 255, 0.8);
+            font-size: 1.12rem;
+            text-shadow: 0px 0px rgba(255, 255, 255, 0.4);
             pointer-events: none;
 
             &:hover {
@@ -135,6 +136,11 @@
                 &:hover {
                     background-color: $hodinkee-green !important;
                 }
+            }
+
+            @include mobile {
+                font-size: 0.99rem;
+                width: 135px;
             }
         }
 

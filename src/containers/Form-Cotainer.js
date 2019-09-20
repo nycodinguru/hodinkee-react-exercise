@@ -33,6 +33,7 @@ export default class FormContainer extends Component {
         e.preventDefault();     
         if (this.state.email.length === 0 || this.state.invalidChars){
             document.querySelector('.Input-parent').classList.add('Invalid-field');
+            if (document.body.scrollHeight < 425) setTimeout( () => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}), 900);
             this.setState({submissionAttempt: true})
             setTimeout( () => {
                 document.querySelector('.Input-parent').classList.remove('Invalid-field');
