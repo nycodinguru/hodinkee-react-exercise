@@ -6,21 +6,25 @@ export default function Form(props) {
             <div className="Form-parent">
                 <h1 className="Hodinkee-logo">HODINKEE</h1>
                 <p className="Release-date">Coming 06.26.19</p>
-                <div className="Input-parent">
+                <div className="Input-parent" ref={props._inputParent}>
                     <input  className="Email-input" 
                             id="Email" 
                             name="email" 
                             type="text" 
+                            aria-label="Email address"
                             placeholder="Your email address" 
                             onChange={props.handleChange}
-                            onFocus={ () => props.raiseInputParent('focus')}
-                            onBlur={ () => props.raiseInputParent('blur')}
+                            onFocus={() => props.raiseInputParent()}
+                            onBlur={() => props.raiseInputParent()}
+                            ref={props._input}
                     ></input>
-                    <label htmlFor="Email">Email</label>
-                    <div className="Submit-button" onClick={ (e) => props.handleSubmit(e)}>NOTIFY ME</div>
+                    <div className="Submit-button" 
+                         onClick={ (e) => props.handleSubmit(e)}
+                         ref={props._submitButton}
+                         >NOTIFY ME</div>
                 </div>  
                 { props.submissionSuccess ?
-                    <div className="Message-parent Success">
+                    <div className="Message-parent Success" ref={props._messageParent}>
                         <div className="Message-parent-content">
                             <div className="close-button-parent" onClick={ () => props.closeSuccessMsg() }>
                                 <div className="close-button"></div>
@@ -34,7 +38,7 @@ export default function Form(props) {
                             </p>
                         </div>
                     </div>
-                : props.submissionAttempt? 
+                : props.submissionAttempt ? 
                     <div className="Message-parent Failure">
                         <p className="Message Failure"> Please enter a valid email address. </p>
                     </div> : null }

@@ -42,7 +42,6 @@
         .Input-parent {
             width: 408px;
             height: 66px;
-            transition: all 1s;
             background: $white;
             margin: 90px auto;
             display: flex;
@@ -50,7 +49,7 @@
             align-items: center;
             border-radius: 4px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 1s;
+            transition: all 0.5s ease-in-out;
             opacity: 0;
             
             &.Loaded {
@@ -100,11 +99,6 @@
             outline-style: none;
         }
 
-        label {
-            color: transparent;
-            user-select: none;
-        }
-
         .Submit-button {
             display: inline-block;
             background: $hodinkee-green;
@@ -122,6 +116,7 @@
             font-size: 1.12rem;
             text-shadow: 0px 0px rgba(255, 255, 255, 0.4);
             pointer-events: none;
+            user-select: none;
 
             &:hover {
                 background-color: $hodinkee-green-hover;

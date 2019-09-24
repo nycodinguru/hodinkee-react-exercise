@@ -4,6 +4,10 @@ import Form from '../components/Form';
 export default class FormContainer extends Component {
     constructor(props){
         super(props);
+        this._input = React.createRef();
+        this._inputParent = React.createRef();
+        this._submitButton = React.createRef();
+        this._messageParent = React.createRef();
         this.state = {
             email: '',
             invalidChars: false,
@@ -12,16 +16,18 @@ export default class FormContainer extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.raiseInputParent = this.raiseInputParent.bind(this);
+        this.closeSuccessMsg = this.closeSuccessMsg.bind(this);
     }
 
     componentDidMount() {
         const that = this;
 
-        document.querySelector('.Email-input').addEventListener('keypress', function (e) {
+        this._input.current.addEventListener('keypress', function (e) {
             if (e.keyCode === 13) that.handleSubmit(e);
         });
 
-        setTimeout( () => document.querySelector('.Input-parent').classList.add('Loaded'), 3400);
+        setTimeout( () => this._inputParent.current.classList.add('Loaded'), 3400);
 
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
@@ -32,17 +38,17 @@ export default class FormContainer extends Component {
     handleSubmit(e) {
         e.preventDefault();     
         if (this.state.email.length === 0 || this.state.invalidChars){
-            document.querySelector('.Input-parent').classList.add('Invalid-field');
+            this._inputParent.current.classList.add('Invalid-field');
             if (document.body.scrollHeight < 425) setTimeout( () => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}), 900);
             this.setState({submissionAttempt: true})
             setTimeout( () => {
-                document.querySelector('.Input-parent').classList.remove('Invalid-field');
+                this._inputParent.current.classList.remove('Invalid-field');
                 this.setState({submissionAttempt: false});
             }, 5000)  
         } 
         if (!document.querySelector('.Invalid-field') && this.state.email.length > 0 && this.state.submissionSuccess === false && this.state.submissionAttempt === false) {
             this.setState({submissionSuccess: true})
-            document.querySelector('.Input-parent').classList.add('Submit-success');
+            this._inputParent.current.classList.add('Submit-success');
             setTimeout( () => document.querySelector('.Message-parent-content').classList.add('Success'), 100);
             setTimeout( () => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}), 1700);
             console.log('Submission successful!');
@@ -59,24 +65,24 @@ export default class FormContainer extends Component {
     validate(name, e) {
         if (name === 'email') { 
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(e.target.value)){
-                document.querySelector('.Submit-button').classList.add('Invalid-field');
+                this._submitButton.current.classList.add('Invalid-field');
                 this.setState({ invalidChars: true});
             } else {
-                document.querySelector('.Submit-button').classList.remove('Invalid-field');
+                this._submitButton.current.classList.remove('Invalid-field');
                 this.setState({ invalidChars: false});
             }
         }
     }
 
-    raiseInputParent(status){
-        status === 'focus' ? document.querySelector('.Input-parent').classList.add('Focused') : 
-            document.querySelector('.Input-parent').classList.remove('Focused');
+    raiseInputParent(){
+        if (document.activeElement === this._input.current) this._inputParent.current.classList.add('Focused')
+             else this._inputParent.current.classList.remove('Focused');
     }
 
     closeSuccessMsg(){
-        document.querySelector('.Message-parent').classList.add('Close');
+        this._messageParent.current.classList.add('Close');
         setTimeout( () => {
-            document.querySelector('.Message-parent').classList.remove('Success')
+            this._messageParent.current.classList.remove('Success')
             window.scrollTo({top: 0, behavior: 'smooth'});
         } , 950);
         document.querySelector('body').classList.add('Close');
@@ -92,6 +98,10 @@ export default class FormContainer extends Component {
                 submissionAttempt={this.state.submissionAttempt}
                 closeSuccessMsg={this.closeSuccessMsg}
                 email={this.state.email}
+                _input={this._input}
+                _inputParent={this._inputParent}
+                _submitButton={this._submitButton}
+                _messageParent={this._messageParent}
             />
         )
     }

@@ -10,6 +10,7 @@
     }
 
     .Navbar-button {
+        user-select: none;
         color: $white;
         display: inline-block;
         position: relative;
