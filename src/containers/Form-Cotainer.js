@@ -17,18 +17,13 @@ export default class FormContainer extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.raiseInputParent = this.raiseInputParent.bind(this);
-        this.closeSuccessMsg = this.closeSuccessMsg.bind(this);
     }
 
     componentDidMount() {
         const that = this;
-
-        this._input.current.addEventListener('keypress', function (e) {
-            if (e.keyCode === 13) that.handleSubmit(e);
-        });
-
+        
+        this._input.current.addEventListener('keypress', function (e) { if (e.keyCode === 13) that.handleSubmit(e)});
         setTimeout( () => this._inputParent.current.classList.add('Loaded'), 3400);
-
         window.addEventListener('resize', () => {
             let vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -58,8 +53,8 @@ export default class FormContainer extends Component {
     handleChange(e) {
         const name = e.target.name;
         const value = e.target.value;
-    
-        this.setState({ [name]: value.trim() }, this.validate(name, e));
+        
+        if (!this.state.submissionSuccess) this.setState({ [name]: value.trim() }, this.validate(name, e));
     }
 
     validate(name, e) {
